@@ -1,0 +1,1 @@
+Subject: Votre compte à été supprimé Charset: iso-8859-1 Bonjour {USERNAME}, Votre compte sur "{SITENAME}" a été supprimé par un administrateur, surement suite à une inactivité de votre part. Si vous souhaitez prendre part de nouveau à la communauté, merci de vous réenregistrer via ce lien: {U_REGISTER} {EMAIL_SIG}

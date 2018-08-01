@@ -1,0 +1,60 @@
+#################################################################
+## NOM de la Premod : Extreme Mod
+## Version: 1.0.2
+## Démo sur http://demo.ezcom-fr.com/extrememod/portal.php
+##
+## Auteur de la PréMod : kraure      http://www.ezcom-fr.com
+##                                                 
+##
+## Premod distribuée uniquement sur www.ezcom-fr.com
+## Vous ne pouvez pas utiliser cette PreMOD comme base pour commencer et/ou distribuer votre propre PreMOD.
+## Vous ne pouvez pas réutiliser les scripts non-distribués présents de cette PreMOD dans une autre PreMOD ou sur votre forum personnel.
+## En cas de problème , le forum d'assitance de la Premod sur ezcom est la pour ca. 
+##     /_!_\  (Aucun support ne sera fait en dehors de ce forum)   /_!_\
+## Merci de laisser les copy que ca soit celui de la PreMod ou meme celui de phpbb par respect pour le travail de son/ses auteur(s). 
+##
+## Aucun support ne sera accordé en cas d'absence de celui ci.
+##
+############################################################## 
+## 
+##   Installation automatique, comme un phpBB de base :
+##
+##   Copier tous les fichiers et dossiers de root sur votre ftp 
+##   Mettre le fichier config.php en CHMOD 666
+##   Lancer l'installation en tapant l'adresse dans votre navigateur : http://votresite.com/install/install.php
+##   (remplacer http://votresite.com/ par le chemin où vous avez copié la PréMod)
+##   
+##   Une fois le forum installé :
+##   - Remettre config.php en CHMOD 644
+##   - Mettre le dossier cache  en CHMOD 777
+##   - Mettre le dossier files en CHMOD 777 
+##   - CHMOD 666 : includes/def_bbc_box.php
+##   - CHMOD 666 sur le fichier cache/vault_config.php
+##   - CHMOD 777 sur le dossier games
+##   - CHMOD 777 sur le dossier games/install_games/type0
+##   - CHMOD 777 sur le dossier games/install_games/type1
+##   - CHMOD 777 sur le dossier games/install_games/type2
+##   - CHMOD 777 sur le dossier games/install_games/type3
+##   - CHMOD 777 sur le dossier games/install_games/type4
+##   - CHMOD 777 sur le dossier sess_arcade
+##   
+##############################################################
+## Historique :
+##
+## 2007-11-9 - Version ExtremeMod 1.0.2
+##  Mise a jour du mod QTE 1.5.5c to 1.6.1	
+##		du mod last topic on index 1.0.0 to 1.0.2
+##
+## 2007-05-23 - Version ExtremeMod 1.0.1
+##  Correction de 2-3 bugs minime sur la V1.0.0
+##  Ajout de 17 mods + pack d'avatar
+##
+## 2007-04-05 - Distribution de la premod ExtremeMod V1.0.0
+##
+## 2007-03-01 - Version 1.0.0
+##  Debut de la premod ExtremeMod
+##
+##
+############################################################## 
+
+

@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>phpBB 2.0.9 :: INSTALL_FR</title>
+<link rel="stylesheet" href="../templates/subSilver/subSilver.css" type="text/css">
+<style type="text/css">
+<!--
+p,ul,td {font-size:10pt;}
+.h2 {font-size:15pt;font-weight:bold;color:red}
+.h3 {font-size:12pt;color:blue}
+//-->
+</style>
+</head>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#006699">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10" align="center">
+	<tr>
+		<td class="bodyline"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><img src="../templates/subSilver/images/logo_phpBB.gif" border="0" alt="phpBB 2 : Creating Communities" vspace="1" /></td>
+		<td align="center" width="100%" valign="middle">
+		<p><span class="maintitle">INSTALLATION de phpBB 2.0.x</span></p>
+               	  <p><b>Documentation traduite par <a href="http://forum.phpbb.biz/profile.php?mode=viewprofile&u=23" target="_blank">darthbob</a>, 
+                    pour le site <a href="http://www.phpbb.biz/" target="_blank">phpBB.biz</a></b></p>
+	</tr>
+</table>
+
+<!-- BEGIN DOCUMENT -->
+<p align="center"><b>Merci de lire ce document en entier avant de procéder à l'installation.</b></p>
+
+<p>Veuillez noter que ces instructions ne sont pas totalement terminées, un guide utilisateur sera bientôt disponible sur le site web phpBB. Ce document vous présente les bases de l'installation du forum.</p>
+
+<p>Une présentation succincte de phpBB 2.0.9 se trouve dans le fichier nommé <a href="README_FR.html">README_FR</a>. Merci de compléter votre lecture avec ce document ! Pour des informations détaillées sur l'utilisation de phpBB 2 vous pouvez lire <a href="http://www.phpbb.com/guide/phpBB_Users_Guide.html" target="_new">le guide d'utilisation</a> désormais disponible.</p>
+
+<ol>
+<li><a href="#quickinstall">Installation rapide</a></li>
+<li><a href="#require">Pré-requis</a></li>
+<li><a href="#install">Nouvelles Installations</a></li>
+<ol type="i">
+<li><a href="#fileext">Changement de l'extension des fichiers</a></li>
+<li><a href="#phpBB1x">Installation à partir d'une version phpBB 1.x</a></li>
+<li><a href="#nonaccess">Installation avec MySQL 3 et 4, PostgreSQL 7.x, MS SQL 7/2000 (y compris via ODBC)</a></li>
+<li><a href="#access">Installation avec MS Access 2000/XP</a></li>
+<li><a href="#requireddata">Saisie des données nécessaires</a></li>
+<li><a href="#completeinstall">Fin de l'installation</a></li>
+</ol>
+<li><a href="#upgrade1.x">Mise à jour depuis phpBB 1.4.x</a></li>
+<li><a href="#upgradeb1">Mise à jour depuis phpBB 2.0 beta-1</a></li>
+<li><a href="#upgradeRC">Mise à jour depuis une version de phpBB 2 Release Candidate</a></li>
+<ol type="i">
+<li><a href="#langtempchanges">Changements du format de pack de langues et des templates</a></li>
+</ol>
+<li><a href="#upgradeSTABLE">Mise à jour depuis une précédente version stable de phpBB 2.0.x</a></li>
+<ol type="i">
+	<li><a href="#upgradeSTABLE_full">Pack complet (Full package)</a></li>
+	<li><a href="#upgradeSTABLE_files">Fichiers modifiés seulement (Changed files only)</a></li>
+	<li><a href="#upgradeSTABLE_patch">Fichier Patch (Patch file)</a></li>
+	<li><a href="#upgradeSTABLE_all">Tous types de packs (All package types)</a></li>
+</ol>
+<li><a href="#postinstall">Tâches importantes à réaliser après toute installation (relatives à la sécurité)</a></li>
+<ol type="i">
+<li><a href="#avatars">Avatars uploadables</a></li>
+<li><a href="#safemode">Safe Mode</a></li>
+<li><a href="#extras">Options supplémentaires</a></li>
+</ol>
+<li><a href="#disclaimer">Disclaimer</a></li>
+</ol>
+
+<a name="quickinstall"></a><h2 class="h2"><u>1. Installation rapide</u></h2>
+
+<p>Si vous possédez des connaissances basiques de l'utilisation de FTP et que vous avez la certitude que votre serveur ou votre hôte est compatible avec phpBB 2, vous pouvez utiliser cette procédure d'installation rapide. Pour une explication plus détaillée, sautez ce chapitre et consultez la <a href="#require">section 2</a> plus loin.</p>
+
+<ol>
+<li>Décompressez le fichier archive de phpBB 2 dans un dossier de votre système local</li>
+<li>Chargez tous les fichiers issus de cette archive (en conservant la structure de répertoires) dans un dossier accessible par le web sur votre serveur ou votre compte chez votre hébergeur.
+<li>Modifiez les droits du fichier config.php pour qu'il soit modifiable par tous (666 ou -rw-rw-rw- via votre Client FTP)</li>
+<li>Avec votre explorateur web, pointez à l'endroit où vous avez placé phpBB 2 en ajoutant install/install.php, par exemple http://www.mydomain.com/phpBB2/install/install.php, http://www.mydomain.com/forum/install/install.php etc.
+<li>Renseignez toutes les informtions demandées et cliquez sur <i>Submit</i></li>
+<li>Modifiez les droits du fichier config.php pour qu'il ne soit modifiable que par vous-même (644 ou -rw-r--r-- via votre Client FTP)</li>
+<li>Cliquez sur le bouton <i>Complete Installation</i> ou pointez de nouveau à l'endroit que vous aviez choisi précédemment.</li>
+<li>phpBB 2 devrait maintenant être disponible, lisez tout de même la <a href="#postinstall">section 8</a> plus loin pour d'importantes instructions post-installation.</li>
+</ol>
+
+<p>Si vous rencontrez des problèmes ou doutez de la marche à suivre pour une des étapes ci-dessus, consultez le reste de la document.</p>
+
+<a name="require"></a><h2 class="h2"><u>2. Pré-requis</u></h2>
+
+<p>L'installation de phpBB 2.0.9 nécessite :</p>
+<ul>
+<li>Un serveur web ou un compte sur un hôte web utilisant un des systèmes d'exploitation majeurs</li>
+<li>Un gestionnaire de base de données SQL, <b>parmi</b> :
+	<ul>
+		<li>MySQL (3.22 ou supérieure)</li>
+		<li>PostgreSQL 7.0.3 ou supérieure (de préférence 7.1.x ou 7.2.x)</li>
+		<li>MS SQL Server (7 ou 2000) en direct ou via ODBC</li>
+		<li>MS Access (2000 ou XP) via ODBC</li>
+	</ul>
+</li>
+<li>PHP (3.0.9 ou supérieur ou de préférence 4.x exécuté comme un module) avec support de la base de données que vous utilisez</li>
+</ul>
+
+<p>Si votre serveur ou votre compte ne remplit pas les pré-requis ci-dessus, il est à craindre que phpBB 2.0 ne soit pas pour vous.</p>
+
+<a name="install"></a><h2 class="h2"><u>3. Nouvelles Installations</u></h2>
+
+<p>L'installation de phpBB 2 dépend de votre serveur et votre gestionnaire de base de données. Si vous disposez d'un <i>accès shell</i> à votre compte (via telnet ou ssh par exemple) vous avez la possibilité de télécharger le fichier archive de phpBB 2 (en mode binaire!) dans un répertoire de votre hôte afin de le décompresser.</p>
+
+<p>Si vous n'avez pas d'accès shell ou ne désirez pas l'utiliser, vous devez décompresser le fichier archive de phpBB 2 dans un répertoire local de votre système à l'aide de votre utilitaire favori (winzip, rar, zip, etc.) Ensuite, vous téléchargez via FTP <b>tous</b> les fichiers qui en sont extraits (en gardant la structure de répertoires et les noms des fichiers!) dans le répertoire approprié de votre hôte. Assurez-vous que la casse des noms de fichiers soit inchangée, <b>NE</b> forcez <b>PAS</b> tous les noms de fichiers en majuscules ou minuscules car cela entraînera des erreurs par la suite.</p>
+
+<p>Tous les fichiers se terminant par .php, .inc, .sql, .cfg et .htm doivent être transférés en mode <b>ascii</b>, tandis que les fichiers images doivent l'être en mode <b>binary</b> (binaire). Si vous ne maîtrisez pas ces notions, merci de consulter la documentation de votre utilitaire client ftp. Dans la plupart des cas, tout ceci vous sera rendu transparent par votre utilitaire client ftp mais si vous rencontrez des problèmes par la suite, assurez-vous que les fichiers ont été transférés conformément à ce qui est décrit dans ce chapitre.</p>
+
+<p>La langue standard de phpBB2 est l'anglais. De nombreux packs spécifiques pour des langues différentes sont disponibles. Si vous n'êtes pas anglophone, vous voudrez sûrement installer un ou plusieurs de ces packs avant de continuer. Le processus d'installation ci-dessous vous permet de sélectionner une langue par défaut parmi celles qui sont disponibles (vous pourrez, bien entendu, changer cette langue par défaut plus tard). Pour plus de détails sur les packs de langue, où les trouver et comment les installer consultez le fichier <a href="README_FR.html#i18n">README_FR</a>.</p>
+
+<p>Une fois tous les fichiers téléchargés sur votre site, vous devez faire pointer votre explorateur à l'endroit choisi en ajoutant install/install.php (notez que si vous avez changé l'extension php, consultez la <a href="#fileext">Section 3.i</a> ci-dessous, vous devez modifier install.php de façon appropriée). Par exemple, si le nom de votre domaine est <i>www.mydomain.tld</i> et que vous avez placé phpBB 2 dans le répertoire /phpBB2 situé à la racine, vous devez entrer <i>http://www.mydomain.tld/phpBB2/install/install.php</i> dans l'explorateur. L'écran d'installation de phpBB 2 devrait alors apparaître.</p>
+
+<a name="fileext"></a><h3 class="h3">3.i. Changement de l'extension des fichiers</h3>
+
+<p>Si l'extension des fichiers utilisés pour exécuter les scripts PHP de votre serveur <b>n'est pas</b> .php mais, par exemple, .php3 ou .phtml vous devez d'abord renommer <b>tous</b> les fichiers se terminant par .php et changer la valeur de $phpEx dans <u>extension.inc</u>. Dans la large majorité des cas, cette étape ne sera pas nécessaire.</p>
+
+<a name="phpBB1x"></a><h3 class="h3">3.ii. Installation à partir d'une version phpBB 1.x</h3>
+
+<p><b>ATTENTION</b>, <b>NE</b> placez <b>PAS</b> les fichiers phpBB 2 dans le même répertoire que les fichiers de phpBB 1.x précédemment installée! Créer un nouveau dossier (ou déplacez l'ancien phpBB 1.x), ne pas le faire vous expose à des erreurs d'exécution (runtime errors).</p>
+
+<a name="nonaccess"></a><h3 class="h3">3.iii. Installation avec MySQL 3 et 4, PostgreSQL 7.x, MS SQL 7/2000 (y compris via ODBC)</h3>
+
+<p><b>Avant de commencer</b> l'installation, assurez-vous de disposer d'une base de données fonctionnelle. La plupart des hébergeurs mettent maintenant à disposition au moins une base de données dans leur offre de base mais elle nécessite souvent une configuration avant de pouvoir être utilisée. Adressez-vous à votre hébergeur pour de plus amples renseignements. Si vous disposez de votre propre serveur et que vous n'êtes pas sûr(e) de la façon de créer votre propre base de données, consultez la documentation de votre gestionnaire de base de données ou le site web correspondant, par exemple <a href="http://www.mysql.com/doc/" target="_new">http://www.mysql.com/doc/</a>, <a href="http://www.postgresql.org/users-lounge/" target="_new">http://www.postgresql.org/users-lounge/</a>, etc.</p>
+
+<p><b>ATTENTION</b>, si votre base de données est MySQL, veuillez sélectionner la version appropriée dans la boîte de sélection. <b>NE</b> sélectionnez <b>PAS</b> MySQL 4.x si vous avez MySQL 3.x (la version la plus répandue). En cas de doute, sélectionnez MySQL 3.x.</p>
+
+<a name="access"></a><h3 class="h3">3.iv. Installation avec MS Access 2000/XP</h3>
+
+<p>Avant d'installer phpBB 2 vous devez créer un <b>Nom de Source de Données</b> ou <b>DSN</b>(Data Source Name). La procédure exacte pour le faire dépend de votre hébergeur, prenez contact avec lui en cas de doute avant de commencer. En général, vous devriez créer un DSN système qui pointe où vous avez stocké une copie décompressée du fichier ms_access_primer.mdb  ( ms_access_primer.zip peut être trouvé dans <u>db/schemas/</u>). Le nom que vous donnez à ce DSN sera utilisé durant l'installation. Ne poursuivez pas l'installation si cette étape n'est pas réalisée !</p>
+
+<p>Veuillez noter que MS Access n'est pas conseillé pour une utilisation intensive. Si vous envisagez que plus d'un ou deux utilisateurs puissent être connectés simultanément à chaque instant, vous devriez vous orienter vers une solution plus robuste.</p>
+
+<a name="requireddata"></a><h3 class="h3">3.v. Saisie des données nécessaires</h3>
+
+<p>Une fois que vous avez atteint la page d'installation, vous avez à saisir plusieurs champs. Assurez-vous de sélectionner le <u>type de base de données</u> correct ! Si vous ne disposez pas du <u>nom de base de données</u>, <u>serveur de base de données</u>, etc. contactez votre hébergeur. Pour les bases de données <b>non-ODBC</b> le serveur de base de données est en général localhost mais ce <b>n'est pas</b> standard! Si vous utilisez une base de données avec ODBC (comme MS Access ou MSSQL via ODBC) il faut saisir le DSN (cf. 2.iv.).</p>
+
+<p>Le <u>préfixe de base de données</u> vous permet d'entrer quelques caractères, un nom court, etc. qui préfixera le nom de toutes les tables utilisées lors de l'installation. La valeur par défaut (phpbb_) est en général suffisant. Si vous disposez de plusieurs copies de phpBB 2 utilisant la même base de données, modifiez ce paramètre ou vous risquez des erreurs lors de l'installation.</p>
+
+<p>Les informations suivantes sont propres à votre site. Vous devez entrer le <u>nom d'utilisateur</u> et le <u>mot de passe</u> du compte administrateur initial (des administrateurs supplémentaires pourront être créés plus tard). Le <u>nom du serveur</u>, <u>le port du serveur</u> et le <u>chemin de script</u> sont essentiels parce que tous les emails contenant des URLs utiliseront ces paramètres. Le programme d'installation essaye de deviner les valeurs initiales mais elles peuvent être incorrectes, alors vérifiez-les !</p>
+
+<p>Souvenez-vous qu'un nom de domaine (ou de serveur) <b>ne</b> contient <b>pas</b> http:// ! Ne saisissez que le nom de domaine, par exemple <i>www.mydomain.tld</i> et <b>pas</b> <i>http://www.mydomain.tld/</i>. Le port du serveur peut, dans la grande majorité des cas, être laissé à 80, qui est le port http standard. Mais si votre serveur web est connecté à un port différent parce que, par exemple, le port 80 est verrouillé, modifiez ce paramètre en conséquence. Le chemin du script est le chemin relatif depuis la racine où phpBB 2 est installé, par exemple si phpBB 2 est installé dans phpBB2/ sous la racine, alors entrez phpBB2 (ou /phpBB2/) comme chemin de script.</p>
+
+<a name="completeinstall"></a><h3 class="h3">3.vi. Fin de l'installation</h3>
+
+<p>Une fois que vous avez vérifié toutes les données à saisir, cliquez sur "submit". Le script d'installation crée et alimente toutes les tables nécessaires. L'installation essaye alors d'écrire dans le fichier <u>config.php</u> qui contiendra alors la configuration de base pour exécuter phpBB 2. Si le script d'installation ne peut écrire dans <u>config.php</u> directement, il vous est possible de télécharger le fichier ou d'utiliser FTP pour le mettre à l'emplacement adéquat.  Si vous choisissez de télécharger le fichier, il vous faut le recharger à l'emplacement du <u>config.php</u> existant sur votre serveur. Si vous essayez d'utiliser FTP via le script d'installation vous aurez à fournir des informations indispensables. Si FTP échoue vous pourrez télécharger le fichier et le recharger comme décrit précédemment.</p>
+
+<p>Pendant la procédure d'installation de phpBB 2 une vérification de la disponibilité du module de base de données de PHP est effectuée et le processus s'arrête si ce n'est pas le cas. Pour éviter cela, vérifiez que vous avez sélectionné la base de données correcte et/ou demandez conseil à votre hébergeur.</p>
+
+<p><b>Ne</b> poursuivez <b>pas</b> avant de terminer correctement l'installation et (si nécessaire) d'avoir recharger le fichier <u>config.php</u> mis à jour.</p>
+
+<a name="upgrade1.x"></a><h2 class="h2"><u>4. Mise à jour depuis phpBB 1.4.x</u></h2>
+
+<p>Avant toute mise à jour, nous vous recommandons fortement de faire une <u>sauvegarde complète de votre base de données </u>! Si vous n'êtes pas sûr(e) de la procédure à suivre pour le réaliser, demandez conseil à votre hébergeur. Une fois votre base de données sauvegardée, vous pourrez suivre les instructions données dans le chapitre <a href="#install">Nouvelles Installations</a> plus haut. <b>Mais</b> vous devez sélectionner <u>Mise à jour</u> au lieu de <u>Installation</u> comme <u>Méthode d'installation</u>.</p>
+
+<p>Comme l'installation, la mise à jour est automatisée. Le fichier config.php est mis à jour automatiquement (si possible, sinon il vous est demandé de télécharger une copie comme dans le chapitre Nouvelles Installations). Une fois le fichier config.php en place, tout devrait se dérouler sans erreur. Veuillez noter que le processus de mise à jour peut prendre du temps et dépend de votre hébergement (un échec peut être dû au serveur web utilisé ou à des timeouts). Si tel est le cas contactez votre hébergeur pour lui demander d'allouer exceptionnellement plus de ressources au script d'installation (soyez poli(e) et ils vous seront d'une aide précieuse).</p>
+
+<p>Une fois l'opération terminée, votre forum sera disponible immédiatement. Si vous rencontrez des erreurs, rechargez votre base de données d'origine et faites part du problème à notre "bug tracker" (voir le fichier <a href="README_FR.html">README_FR</a> pour plus de détails).</p>
+
+<a name="upgradeb1"></a><h2 class="h2"><u>5. Mise à jour depuis phpBB 2.0 beta-1</u></h2>
+
+<p>Désolé, mais aucune mise à jour directe n'est disponible pour la beta-1 (on vous avait prévenu!). Si vous êtes à l'aise avec SQL, etc. vous devriez pouvoir effectuer les changements dans la base de données manuellement. Vous aurez besoin d'examiner les CVS check-ins pour déterminer où et quoi modifier.</p>
+
+<a name="upgradeRC"></a><h2 class="h2"><u>6. Mise à jour depuis une version de phpBB 2 Release Candidate</u></h2>
+
+<p>La mise à jour depuis une version RC est en général plus facile. Tout d'abord, faites une sauvegarde de votre fichier <u>config.php</u> existant, et gardez-la en sécurité ! Ensuite, effacez tous les fichiers phpBB 2 existants, sans en oublier un seul, sinon vous risquez de rencontrer des erreurs ultérieurement. Vous pouvez laisser les templates ajoutés mais notez qu'ils ne fonctionneront peut-être pas dans la version finale. Il est de plus recommandé de revenir à subSilver si vous utilisez un style différent. Ensuite, vous pouvez charger les nouveaux fichiers de phpBB 2 (voir le chapitre <a href="#install">Nouvelles Installations</a> pour plus de détails). Une fois la copie terminée, écrasez le fichier <u>config.php</u> généré par l'installation avec votre sauvegarde.</p>
+
+<p>Vous pouvez maintenant exécuter le fichier <b>install/update_to_208.php</b> qui, selon la version précédente que vous utilisiez, procédera aux modifications de la base de données. Vous obtiendrez peut être des <u>FAILURES</u> pendant la procédure, qui peuvent être ignorés sauf si vous voyez <u>ERROR</u>, qui provoquera l'arrêt du script (dans ce cas, vous pouvez obtenir de l'aide via nos forums ou notre "bug tracker").</p>
+
+<p><b>Utilisateurs de la version RC-2 (et précédentes) et de MSSQL</b>, notez que pendant la procédure de mise à jour, les tables de votre forum seront supprimées et re-créées. Toutes les données des champs standards seront préservées. Si vous avez modifié la table forums, ajouté des champs ou modifié des champs existants, ces changements seront <b>PERDUS</b>. Si cette issue est pénalisante pour vous, nous vous recommandons de mettre en commentaire la section "DROP FORUM TABLE" du fichier update_to_208.php et de manuellement la remplacer par des instructions qui modifient la colonne forum_id pour supprimer la valeur d'IDENTITY (si besoin).</p>
+
+<p>Une fois le script update_to_208 terminé, vous <b>DEVEZ</b> accéder au panneau de configuration générale de l'Administration (Administration General Configuration panel) et vérifier les données qui s'y trouvent. C'est essentiel si vous utilisiez une version antérieure à la RC-3 puisque des informations supplémentaires doivent être entrées pour permettre l'envoi correct d'email contenant des URLs.</p>
+
+<a name="langtempchanges"></a><h3 class="h3">6.i. Changements du format de pack de langues et des templates</h3>
+
+<p>Notez que des modifications ont été apportées dans le format des langues, de la localisation des images et dans les templates depuis les précédentes RC. Si vous utilisiez une version antérieure à la RC-3, vous <b>devez</b> charger les nouveaux packs de langues et de localisation d'images. (language and image localisation packs). Vous pouvez sans crainte supprimer tous les fichiers <u>*_lang.gif</u> existants dans le répertoire subSilver/images puisqu'ils ne sont plus utilisés. Si vous utilisiez ou aviez installé un template d'une tierce-partie, vous devez soit l'enlever soit le mettre à jour. Quelques variables de templates ont été modifiées, ce qui peut entraîner des dysfonctionnements dans ces templates tierces sauf s'ils suivent les standards de phpBB 2.0.x.</p>
+
+<a name="upgradeSTABLE"></a><h2 class="h2"><u>7. Mise à jour depuis une précédente version stable de phpBB 2</u></h2>
+
+<p>Si vous utilisez actuellement une précédente version stable de phpBB 2, la mise à jour est directe. Vous devez télécharger un des trois packs et votre choix détermine ce que vous devez faire. <b>Attention</b>: avant de mettre à jour, nous recommandons vivement de faire une <u>sauvegarde complète de votre base de données et des fichiers phpBB2</u>! Si vous n'êtes pas sûr de la manière de procéder pour le faire, demandez conseil à votre hébergeur.</p>
+
+<p><b>Utilisateurs de MySQL, veuillez noter</b>: Des modifications introduites dans la version 2.0.4 peuvent accroître la taille de votre base de données, plus spécialement la table search_wordmatch. D'autres changements dans cette version ont pour but de réduire la taille de la base de données. Mais ceux-ci ne sont pas applicables à tous les types de forums (particulièrement les forums non-anglais). Bien que l'accroissement de taille sera relativement réduit, cela peut être pénalisant pour certains utilisateurs. En particulier ceux dont l'hébergement limite la taille de base de données et qui possèdent déjà une taille de base à la limite du maximum.</p>
+
+<a name="#upgradeSTABLE_full"></a><h3 class="h3">7.i. Pack complet (Full package)</h3>
+
+<p>Si vous avez téléchargé le pack complet, suivez la même procédure générale de mise à jour que pour "<a href="#upgradeRC">Mise à jour depuis une version de phpBB 2 Release Candidate</a>". Sauf en ce qui concerne le besoin de changer ou mettre à jour les styles. De plus, il faut en général vérifier les données du panneau de contrôle d'administration (c'est en tout cas conseillé)</p> 
+
+<a name="#upgradeSTABLE_files"></a><h3 class="h3">7.ii. Fichiers modifiés seulement (Changed files only)</h3>
+
+<p>Ce pack contient un certain nombre d'archives, qui contiennent chacun les fichiers modifiés à chaque version jusqu'à la 2.0.9. Vous devez sélectionner l'archive correspondant à votre version actuelle, par exemple si vous êtes actuellement en 2.0.5, sélectionnez le fichier phpBB-2.0.5_to_2.0.9.zip/tar.gz</p>
+
+<p>La structure des répertoires a été préservée afin de vous permettre (si vous le désirez) de simplement charger le contenu de l'archive au même endroit sur le serveur, c'est à dire d'écraser les fichiers existants avec les nouvelles versions. N'oubliez pas que si vous avez ajouté des mods ces fichiers pourront écraser des fichiers modifiés. Vous devrez réappliquer les mods à chacun des fichiers concernés.</p>
+
+<p>Comme pour les autres procédures de mise à jour, vous devez exécuter <b>install/update_to_208.php</b> après avoir mis à jour les fichiers. Cela mettra à jour le schéma et les données (si nécessaire) de la base de données et incrémentera le numéro de version en base.</p>
+
+<a name="#upgradeSTABLE_patch"></a><h3 class="h3">7.iii. Fichier Patch (Patch file)</h3>
+
+<p>Le fichier Patch est probablement la meilleure solution lorsqu'on dispose de nombreux modules ou modifications et qu'on ne veut pas les réappliquer à tous les fichiers modifiés. Pour utiliser cette méthode, vous avez besoin d'un accès à la ligne de commande pour utiliser l'application standard UNIX <b>patch</b>.</p>
+
+<p>Des fichiers patches sont fournis pour permettre la mise à jour depuis chaque version stable précédente. Sélectionnez le patch adéquat, par exemple si votre version actuelle est 2.0.2 vous devez choisir phpBB-2.0.2_to_2.0.9.patch. Placez le patch sélectionné dans le dossier contenant les fichiers de phpBB 2 (c'est à dire index.php, viewforum.php, etc.). Ensuite, exécutez la commande suivante: <b>patch -p0 &lt; [PATCH NAME]</b> (où PATCH NAME est le nom du fichier de patch choisi). Le processus se terminera rapidement, et on l'espère sans aucun HUNK FAILED.</p>
+
+<p>Si vous obtenez des échecs, jetez un oeil sur la méthode <a href="#upgradeSTABLE_files">Fichiers modifiés seulement (Changed files only)</a> pour remplacer les fichiers en question, avec la condition de réappliquer manuellement tous les mods sur ces fichiers. Mais, vous pouvez également examiner les fichiers .rej pour déterminer les raisons des échecs et effectuer quelques ajustements aux sources incriminés.</p>
+
+<p>Vous devez bien entendu supprimer le fichier Patch une fois que vous l'avez utilisé. Comme pour les autres procédures vous devez exécuter <b>install/update_to_208.php</b> après avoir fini la mise à jour des fichiers. Cela mettra à jour le schéma et les données (si nécessaire) de la base de données et incrémentera le numéro de version en base.</p>
+
+<a name="#upgradeSTABLE_all"></a><h3 class="h3">7.iv. Tous types de packs (All package types)</h3>
+
+<p>Si vous disposez de packs de langues différents de l'anglais, vous devez vérifier si une nouvelle version est disponible. Un certain nombre de phrases manquantes ont été ajoutées, ce qui, même si ce n'est pas essentiel, profitera à vos utilisateurs. Notez que tous les packs de langues n'ont pas été mis à jour, préparez vous à vérifier périodiquement leur disponibilité.</p>
+
+<a name="postinstall"></a><h2 class="h2"><u>8. Tâches importantes à réaliser après toute installation (relatives à la sécurité)</u></h2>
+
+<p>Une fois phpBB 2.0.9 installé, vous <b>DEVEZ</b> supprimer les dossiers /install et /contrib . Les laisser en place est une <u>très sérieuse faille de sécurité potentielle</u> qui peut aboutir à l'effacement ou l'altération de vos fichiers, etc. Notez que jusqu'à ce que ces dossiers soient effecés, phpBB2 ne fonctionnera pas et un message d'avertissement sera affiché. En plus de ces suppressions <b>essentielles</b> vous pouvez également effacer le dossier docs/ si vous le désirez.</p>
+
+<p>Une fois ces dossiers effacés, accédez au panneau d'administration (administration panel) L'accès à ce panneau dépend de la fin de l'installation qui peut vous y diriger automatiquement. Si ce n'est pas le cas, connectez vous en tant qu'administrateur (celui que vous avez spécifié pendant l'installation/mise à jour) et cliquez sur le lien "<b>Administration Panel</b>" en bas de n'importe quelle page. Assurez-vous que les informations affichées dans General -> Configuration sont correctes !</p>
+
+<a name="avatars"></a><h3 class="h3">8.i. Avatars uploadables</h3>
+
+<p>phpBB 2 possède plusieurs méthodes pour permettre aux utilisateurs de sélectionner leur propre <i>avatar</i> (un avatar est une petite image, généralement associée à un utilisateur, et affichée juste sous son nom dans les messages).</p>
+
+<p>Deux de ces options permettent aux utilisateurs de charger leur avatar depuis leur propre machine ou une localisation distante (via une URL). Si vous désirez activer ces possibilités vous devez d'abord vous assurer que les chemins de chargement des avatars (paths for uploadeable avatars) spécifiés dans Admin -> General -> Configuration -> Avatars sont corrects. Par défaut, il s'agit de <u>images/avatars</u> mais vous pouvez librement le modifier, à condition de mettre à jour la configuration. Vous devez également vous assurer que l'écriture dans ce répertoire est possible pour le serveur web. Habituellement, cela nécessite de modifier les permissions pour autoriser les lectures et écritures pour tout le monde dans ce répertoire. La procédure exacte pour le faire dépend de votre client ftp et de votre système d'exploitation.</p>
+
+<p>Sous UNIX par exemple, positionnez le répertoire à a+rwx (ou ugo+rwx ou même 777). Utilisez la ligne de commande et chmod ou bien votre client ftp (commande "Change Permissions", "chmod" ou équivalent, consultez la documentation de votre client ftp pour les détails). La plupart des clients FTP listent les permissions pour le user (Read, Write, Execute), Group (Read, Write, Execute) et Other (Read, Write, Execute). Cochez toutes les cases pour permettre un accès correct.</p>
+
+<p>Sous Windows, vous devez vous assurer que le répertoire n'est pas protégé contre l'écriture et qu'il possède des permissions d'écriture globales (consultez la documentation serveurs ou contactez votre hébergeur si vous n'êtes pas habitué(e) à ces commandes).</p>
+
+<p>Attention, soyez averti(e) que positionner un répertoire avec un accès en écriture global est une faille de sécurité potentielle. Même si rien de critique ne peut se produire (sauf l'effacement de tous les avatars) il y a toujours des personnes qui peuvent provoquer ce genre d'ennuis. Vous devez donc surveiller ce répertoire et en effectuer des sauvegardes régulières.</p>
+
+<a name="safemode"></a><h3 class="h3">8.ii. Safe Mode</h3>
+
+<p>phpBB 2.0.9 inclut un support pour l'utilisation des avatars uploadables sur les systèmes exécutant PHP en mode protégé (safe mode). Si cela correspond à votre système, vous devez créer un sous-répertoire <u>tmp</u> dans le répertoire spécifié pour le stockage des avatars chargés (par défaut il s'agit de images/avatars). Donnez-lui les mêmes permissions d'accès que spécifié ci-dessus.</p>
+
+<p>Le support du safe mode est compatible avec diverses restrictions qui peuvent vous être imposées (si elles ne sont pas trop restrictives et si la version de PHP installée est une 4.0.3 ou supérieure). Il n'y a généralement pas besoin de configuration manuelle pour le support du safe mode qui est normalement transparent.</p>
+
+<a name="extras"></a><h3 class="h3">8.iii. Options supplémentaires</h3>
+
+<p>Ce package inclut deux fichiers supplémentaires (optionnels), que vous pourrez trouver dans le répertoire <u>contrib/</u>. Ces options sont les fichiers <i>template_file_cache.php</i> et <i>template_db_cache.php</i> qui concernent les temps de chargement et de génération des pages sur les systèmes lents ou surchargés. Ces modules mis à jour compilent chaque template et utilisent les versions compilées de ces fichiers plutôt que de les générer à chaque demande de visualisation. Les tests ont semblé démontrer une baisse significative des temps de génération des pages et plus important, une baisse significative de la charge du serveur en environnements d'hébergement mutualisé (virtual hosting environments).</p>
+
+<p>Consultez le fichier <a href="../contrib/README_FR.html">README_FR</a> contenu dans le dossier contrib pour plus de détails.</p>
+
+<a name="disclaimer"></a><h2 class="h2"><u>9. Copyright et disclaimer</u></h2>
+
+<p>Cette application est un logiciel opensource sous licence <a href="http://www.gnu.org/licenses/gpl.html" target="_new">GPL</a>. Merci de lire le code source et les fichiers du dossier Docs pour plus de détails. Ce package et son contenu sont Copyright © 2002 <a href="http://www.phpbb.com/" target="_new">phpBB Group</a>, Tous droits réservés.</p>
+
+<p align="center"><b>Documentation traduite par <a href="http://forum.phpbb.biz/profile.php?mode=viewprofile&u=23" target="_blank">darthbob</a>, pour le site <a href="http://www.phpbb.biz/" target="_blank">phpBB.biz</a></b></p>
+
+<p align="center">Cette page issue du site <a href="http://www.phpbb.biz/">phpBB.biz</a> est soumise &agrave; la licence GNU FDL. <br>Permission vous est donn&eacute;e de distribuer, modifier des copies de cette page tant que cette note appara&icirc;t clairement.</p>
+<!-- END DOCUMENT -->
+
+				</td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+</body>
+</html>
